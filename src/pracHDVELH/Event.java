@@ -133,6 +133,11 @@ public class Event extends NodeMultiple {
 
 		this.gui = gui;
 	}
+
+	@Override
+	public String toString() {
+		return "Event #" + id + " (" + getClass() + "): " + data;
+	}
 }
 
 // eof

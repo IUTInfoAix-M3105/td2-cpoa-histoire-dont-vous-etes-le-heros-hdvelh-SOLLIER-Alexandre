@@ -18,8 +18,8 @@ public class NodeMultiple {
 	public static final String ERROR_MSG_INDEX_OUT_OF_RANGE = "Index out of range";
 	public static int NODE_MAX_ARITY = 10;
 
-	private Object data;
-	private NodeMultiple[] daughters;
+	protected Object data;
+	protected NodeMultiple[] daughters;
 
 	/* Overridden methods */
 	@Override
