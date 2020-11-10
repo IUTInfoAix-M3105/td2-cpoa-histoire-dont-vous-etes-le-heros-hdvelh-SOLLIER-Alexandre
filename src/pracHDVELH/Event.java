@@ -145,6 +145,10 @@ public class Event extends NodeMultiple {
 	public boolean isFinal() {
 		return super.hasDaughters();
 	}
+
+	public boolean isInRange(int index) {
+		return index >= 0 && index < NodeMultiple.NODE_MAX_ARITY;
+	}
 }
 
 // eof
