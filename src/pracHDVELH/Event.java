@@ -16,7 +16,7 @@ import myUtils.ErrorNaiveHandler;
 public class Event extends NodeMultiple {
 	public static final String ERROR_MSG_UNEXPECTED_END = "Sorry, for some unexpected reason the story ends here...";
 	public static final String PROMPT_ANSWER = "Answer: ";
-	public static final String WARNING_MSG_INTEGER_EXPECTED = "Please input a integer within range!";
+	public static final String WARNING_MSG_INTEGER_EXPECTED = "Please input an integer within range!";
 	private static int idPool = 0;
 
 	private final int id;
@@ -140,6 +140,10 @@ public class Event extends NodeMultiple {
 	@Override
 	public String toString() {
 		return "Event #" + id + " (" + getClass() + "): " + data;
+	}
+
+	public boolean isFinal() {
+		return super.hasDaughters();
 	}
 }
 
