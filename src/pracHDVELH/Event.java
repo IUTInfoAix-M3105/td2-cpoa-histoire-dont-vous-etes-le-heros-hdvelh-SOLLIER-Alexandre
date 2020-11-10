@@ -121,7 +121,10 @@ public class Event extends NodeMultiple {
 	}
 
 	/* Methods */
-	/* TO BE COMPLETED */
+	public Event(GUIManager gui, String data) {
+		super(data);
+		this.gui = gui;
+	}
 }
 
 // eof
