@@ -121,8 +121,16 @@ public class Event extends NodeMultiple {
 	}
 
 	/* Methods */
+
+	public Event() {
+		super();
+
+		this.gui = new GUIManager();
+	}
+
 	public Event(GUIManager gui, String data) {
 		super(data);
+
 		this.gui = gui;
 	}
 }
