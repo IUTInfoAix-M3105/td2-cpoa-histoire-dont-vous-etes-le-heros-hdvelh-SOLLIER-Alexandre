@@ -149,6 +149,30 @@ public class Event extends NodeMultiple {
 	public boolean isInRange(int index) {
 		return index >= 0 && index < NodeMultiple.NODE_MAX_ARITY;
 	}
+
+	public int interpretAnswer() {
+		// Check that the story hasn't ended
+		if (isFinal()) {
+			ErrorNaiveHandler.abort(ERROR_MSG_UNEXPECTED_END);
+		}
+
+		// Check that the answer has been parsed correctly
+		int parsedPath;
+		try {
+			parsedPath = Integer.parseInt(playerAnswer);
+		} catch (NumberFormatException e) {
+			ErrorNaiveHandler.warning(e.getMessage());
+			return -1;
+		}
+
+		// Check that the index is in range
+		if (!isInRange(parsedPath)) {
+			ErrorNaiveHandler.warning(WARNING_MSG_INTEGER_EXPECTED);
+			return -1;
+		}
+
+		return parsedPath;
+	}
 }
 
 // eof
