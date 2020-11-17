@@ -171,7 +171,19 @@ public class Event extends NodeMultiple {
 			return -1;
 		}
 
+		chosenPath = parsedPath;
 		return parsedPath;
+	}
+
+	public Event run() {
+		// Output current situation
+		gui.outputln(getData());
+
+		// Get answer from user
+		playerAnswer = gui.getInputReader().next();
+
+		// Interpret answer, and return next event
+		return getDaughter(interpretAnswer());
 	}
 }
 
