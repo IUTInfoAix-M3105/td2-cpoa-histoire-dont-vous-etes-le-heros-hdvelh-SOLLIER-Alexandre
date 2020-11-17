@@ -110,23 +110,26 @@ public class Scenario {
 		 */
 		event3.addDaughter(endEvent);
 		event3.addDaughter(event3);
-//
-//		/* ******* */
-//		// **2.3
-//		// ***event4
-//		// ****event2
-//		// ****E
-//		// ****event3
-//		// ...
-//
-//		int[] mask = { 3, 6, 7 };
-//		Event event4 = new EventRandomSolution(gui, "Random choice of the next event...", mask, "Dice rolling... Roll=",
-//				"\nNext event is ");
-//		event3.setDaughter(event4, 0);
-//		event4.addDaughter(event2);
-//		event4.addDaughter(endEvent);
-//		event4.addDaughter(event3);
 
+		int[] mask = { 3, 6, 7 };
+		Event event4 = new EventRandomSolution(gui, "Random choice of the next event...", mask, "Dice rolling... Roll=",
+				"\nNext event is ");
+
+		/*
+		 * Hijack -- 2.3 => 2.3.1 (Correct answer)
+		 */
+		event3.setDaughter(event4, 0);
+
+		/*
+		 * 2.3.1 => E	(43%)
+		 * 2.3.1 => 2	(43%)
+		 * 2.3.1 => 2.3	(14%)
+		 */
+		event4.addDaughter(endEvent);
+		event4.addDaughter(event2);
+		event4.addDaughter(event3);
+
+		// Run the scenario
 		System.out.println(scenario.run());
 	}
 }

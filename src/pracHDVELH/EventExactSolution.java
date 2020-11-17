@@ -15,10 +15,12 @@ public class EventExactSolution extends Event {
     public int interpretAnswer() {
         // Return 0 if player answer is correct, 1 otherwise
         if (getPlayerAnswer().equals(solution)) {
-            return 0;
+            setChosenPath(0);
         } else {
             getGui().outputln(MSG_WRONG_ANSWER);
-            return 1;
+            setChosenPath(1);
         }
+
+        return getChosenPath();
     }
 }
