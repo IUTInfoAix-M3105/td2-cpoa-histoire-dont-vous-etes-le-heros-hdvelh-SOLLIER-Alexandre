@@ -57,6 +57,7 @@ public class Scenario {
 		Scenario scenario;
 		GUIManager gui = new GUIManager(System.in, System.out, System.err);
 
+		// === EXERCISE 5 - Simple Scenario ===
 		// S
 		Event startEvent = new Event(gui, "Go!\n" + "(1)1 (2)2");
 
@@ -92,17 +93,23 @@ public class Scenario {
 
 		scenario = new Scenario(gui, startEvent);
 
-//		// *2
-//		// ...
-//		// **2.3:event3
-//		// ***E
-//		// ***event3
-//
-//		Event event3 = new EventExactSolution(gui, "Wizard: how much is worth pi?", "3.14159");
-//		event2.setData(event2.getData() + " (3)2.3");
-//		event2.addDaughter(event3);
-//		event3.addDaughter(endEvent);
-//		event3.addDaughter(event3);
+		// === EXERCICE 6 - EventExactSolution ===
+
+		// 2.3
+		Event event3 = new EventExactSolution(gui, "Wizard: how much is worth pi?", "3.14159");
+		event2.setData(event2.getData() + " (3)2.3");
+
+		/*
+		 * 2 => 2.3
+		 */
+		event2.addDaughter(event3);
+
+		/*
+		 * 2.3 => E		(Correct answer)
+		 * 2.3 => 2.3	(Wrong answer)
+		 */
+		event3.addDaughter(endEvent);
+		event3.addDaughter(event3);
 //
 //		/* ******* */
 //		// **2.3
