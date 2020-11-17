@@ -5,6 +5,8 @@
  */
 package pracHDVELH;
 
+import java.util.Objects;
+
 /**
  * @author prost
  *
@@ -26,6 +28,22 @@ public class Scenario {
 
 	public GUIManager getGui() {
 		return gui;
+	}
+
+	public String run() {
+		// Check if there's a head
+		if (Objects.isNull(head))
+			return MSG_EMPTY_SCENARIO;
+
+		// Set current event as head
+		Event currentEvent = head;
+
+		// Loop while the current event is not the final one
+		while (!currentEvent.isFinal()) {
+			currentEvent = currentEvent.run();
+		}
+
+		return MSG_FINALE;
 	}
 
 	/* MAIN */
