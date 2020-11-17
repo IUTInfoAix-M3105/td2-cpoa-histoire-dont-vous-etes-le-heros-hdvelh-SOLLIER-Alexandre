@@ -37,7 +37,7 @@ public class NodeMultiple {
 	 * @return the {@code i}th daughter node, or {@code null} if it does not exist.
 	 */
 	public NodeMultiple getDaughter(int i) {
-		if (i < 0 || i > daughters.length) {
+		if (i < 0 || i >= daughters.length) {
 			ErrorNaiveHandler.abort(ERROR_STATUS_INDEX_OUT_OF_RANGE, ERROR_MSG_INDEX_OUT_OF_RANGE);
 			return null;
 		}
@@ -92,7 +92,7 @@ public class NodeMultiple {
 	 */
 	public void addDaughter(NodeMultiple daughter) {
 		for (int i = 0; i < daughters.length; ++i) {
-			if (!Objects.isNull(daughters[i])) {
+			if (Objects.isNull(daughters[i])) {
 				daughters[i] = daughter;
 				return;
 			}

@@ -56,6 +56,7 @@ public class ErrorNaiveHandler {
    */
   public static void warning(int status, String msg) {
 	System.err.println("WARNING (status=" + status + "): " + msg);
+	System.err.flush();
   }
 
   /**

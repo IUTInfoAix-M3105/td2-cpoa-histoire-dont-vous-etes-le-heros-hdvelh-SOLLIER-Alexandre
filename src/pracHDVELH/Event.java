@@ -143,11 +143,11 @@ public class Event extends NodeMultiple {
 	}
 
 	public boolean isFinal() {
-		return super.hasDaughters();
+		return !super.hasDaughters();
 	}
 
 	public boolean isInRange(int index) {
-		return index >= 0 && index < NodeMultiple.NODE_MAX_ARITY;
+		return index >= 0 && index <= NodeMultiple.NODE_MAX_ARITY;
 	}
 
 	public int interpretAnswer() {
@@ -157,22 +157,20 @@ public class Event extends NodeMultiple {
 		}
 
 		// Check that the answer has been parsed correctly
-		int parsedPath;
 		try {
-			parsedPath = Integer.parseInt(playerAnswer);
+			chosenPath = Integer.parseInt(playerAnswer) - 1;
 		} catch (NumberFormatException e) {
 			ErrorNaiveHandler.warning(e.getMessage());
 			return -1;
 		}
 
 		// Check that the index is in range
-		if (!isInRange(parsedPath)) {
+		if (!isInRange(chosenPath)) {
 			ErrorNaiveHandler.warning(WARNING_MSG_INTEGER_EXPECTED);
 			return -1;
 		}
 
-		chosenPath = parsedPath;
-		return parsedPath;
+		return chosenPath;
 	}
 
 	public Event run() {
@@ -180,6 +178,7 @@ public class Event extends NodeMultiple {
 		gui.outputln(getData());
 
 		// Get answer from user
+		gui.outputln(PROMPT_ANSWER);
 		playerAnswer = gui.getInputReader().next();
 
 		// Interpret answer, and return next event
