@@ -49,6 +49,7 @@ public class Scenario {
 				ErrorNaiveHandler.warning(MSG_EMPTY_SCENARIO);
 		}
 
+		gui.outputln(currentEvent.getData());
 		return MSG_FINALE;
 	}
 
